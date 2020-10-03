@@ -13,7 +13,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  deploy:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -22,7 +22,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # run
+      # copy files
       - name: ssh deploy
         uses: easingthemes/ssh-deploy@v2.1.5
         with:
@@ -33,4 +33,13 @@ jobs:
           # Remote user
           REMOTE_USER: aprender-estudar-textos
           # Target directory
-          TARGET: # optional, default is /home/aprender-estudar-textos/app/
+          TARGET: /home/aprender-estudar-textos/app/
+
+      # run docker-compose
+      - name: ssh run
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: aprender-estudar-textos
+          key : ${{ secrets.PRIVATE_KEY }}
+          script: cd app && docker-compose down && docker-compose up -d
