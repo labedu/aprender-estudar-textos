@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  all:
+    build: 
+      context: ./labedu-all
+    ports:
+      - "5000:5000"
+  ocr:
+    build: 
+      context: ./labedu-ocr
+    ports:
+      - "5001:5001"
