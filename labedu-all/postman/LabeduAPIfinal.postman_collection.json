@@ -1,0 +1,292 @@
+{
+	"info": {
+		"_postman_id": "726ea802-4564-4421-b195-d074affffb5b",
+		"name": "LabeduAPIfinal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Task 01 --> OCR: Recebe imagem retorna texto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "a",
+							"type": "file",
+							"src": "/Users/marceloamancio/Desktop/Screen Shot 2020-04-16 at 23.52.54.png"
+						},
+						{
+							"key": "b",
+							"type": "file",
+							"src": "/Users/marceloamancio/Desktop/Screen Shot 2020-04-16 at 23.55.55.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://labeduocr01-shv3eruyaa-uc.a.run.app/imgtotext",
+					"protocol": "https",
+					"host": [
+						"labeduocr01-shv3eruyaa-uc",
+						"a",
+						"run",
+						"app"
+					],
+					"path": [
+						"imgtotext"
+					]
+				},
+				"description": "Observação:  Cada KEY deve ter um nome diferente, e.g: image_number_01, image_number_02, image_number_03, ..."
+			},
+			"response": []
+		},
+		{
+			"name": "Task 01 (auxiliar) -> Transforma texto em títulos e parágraphos",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "# Lutaram e resistiram\n\n## Os negros escravizados lutaram e resistiram\n\nOs negros escravizados\nlutaram e resistiram contra o cativeiro de muitas maneiras:\nqueimaram a lavoura\ne promoveram fugas isoladas.\nAlém disso, era comum sofrerem de profunda depressão,\nque os impedia de trabalhar\ne, muitas vezes, levava-os à morte.\nTambém se manifestavam por meio de revoltas\ne de assassinatos de senhores ou de capatazes.\n\nHavia também as fugas de grupos,\nque depois formavam povoados organizados,\nconhecidos como quilombos.\nEsses agrupamentos geralmente se fixavam em locais de difícil acesso,\npara impedir a ação dos fazendeiros e das autoridades.\n Nesses locais,\n além dos escravos fugidos,\n viviam alguns indígenas e pessoas livres pobres.\n \n \n"
+				},
+				"url": {
+					"raw": "http://0.0.0.0:5000/aux/parsetext",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "5000",
+					"path": [
+						"aux",
+						"parsetext"
+					]
+				},
+				"description": "Títulos devem começar com # \nSubtítulos começam com ##\n\nE parágrafos devem ser separados por pelo menos uma linha em branco."
+			},
+			"response": []
+		},
+		{
+			"name": "Task 02 --> Entra texto Json formatado em parágrafos e retorna formatação cola et commata",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"paragraphs\": [\n        \"Os negros escravizados\\nlutaram e resistiram contra o cativeiro de muitas maneiras:\\nqueimaram a lavoura\\ne promoveram fugas isoladas.\\nAlém disso, era comum sofrerem de profunda depressão,\\nque os impedia de trabalhar\\ne, muitas vezes, levava-os à morte.\\nTambém se manifestavam por meio de revoltas\\ne de assassinatos de senhores ou de capatazes.\",\n        \"Havia também as fugas de grupos,\\nque depois formavam povoados organizados,\\nconhecidos como quilombos.\\nEsses agrupamentos geralmente se fixavam em locais de difícil acesso,\\npara impedir a ação dos fazendeiros e das autoridades.\\nNesses locais,\\nalém dos escravos fugidos,\\nviviam alguns indígenas e pessoas livres pobres.\"\n    ],\n    \"subtitle\": \"Os negros escravizados lutaram e resistiram\",\n    \"title\": \"Lutaram e resistiram\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:5000/formatacao/getcolaetcommata",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "5000",
+					"path": [
+						"formatacao",
+						"getcolaetcommata"
+					]
+				},
+				"description": "O Texto deve entrar em formato json separado por parágrafos."
+			},
+			"response": []
+		},
+		{
+			"name": "Task 03a --> Do texto em json para vocabulary por parágrafos",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"paragraphs\": [\n        \"Os negros escravizados\\nlutaram e resistiram contra o cativeiro de muitas maneiras:\\nqueimaram a lavoura\\ne promoveram fugas isoladas.\\nAlém disso, era comum sofrerem de profunda depressão,\\nque os impedia de trabalhar\\ne, muitas vezes, levava-os à morte.\\nTambém se manifestavam por meio de revoltas\\ne de assassinatos de senhores ou de capatazes.\",\n        \"Havia também as fugas de grupos,\\nque depois formavam povoados organizados,\\nconhecidos como quilombos.\\nEsses agrupamentos geralmente se fixavam em locais de difícil acesso,\\npara impedir a ação dos fazendeiros e das autoridades.\\nNesses locais,\\nalém dos escravos fugidos,\\nviviam alguns indígenas e pessoas livres pobres.\"\n    ],\n    \"subtitle\": \"Os negros escravizados lutaram e resistiram\",\n    \"title\": \"Lutaram e resistiram\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:5000/vocabulary/getvocabulary",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "5000",
+					"path": [
+						"vocabulary",
+						"getvocabulary"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Task 03b --> Do texto em json para vocabulary por parágrafos (vocabulário não se repete)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"paragraphs\": [\n        \"Os negros escravizados\\nlutaram e resistiram contra o cativeiro de muitas maneiras:\\nqueimaram a lavoura\\ne promoveram fugas isoladas.\\nAlém disso, era comum sofrerem de profunda depressão,\\nque os impedia de trabalhar\\ne, muitas vezes, levava-os à morte.\\nTambém se manifestavam por meio de revoltas\\ne de assassinatos de senhores ou de capatazes.\",\n        \"Havia também as fugas de grupos,\\nque depois formavam povoados organizados,\\nconhecidos como quilombos.\\nEsses agrupamentos geralmente se fixavam em locais de difícil acesso,\\npara impedir a ação dos fazendeiros e das autoridades.\\nNesses locais,\\nalém dos escravos fugidos,\\nviviam alguns indígenas e pessoas livres pobres.\"\n    ],\n    \"subtitle\": \"Os negros escravizados lutaram e resistiram\",\n    \"title\": \"Lutaram e resistiram\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:5000/vocabulary/getvocabularynr",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "5000",
+					"path": [
+						"vocabulary",
+						"getvocabularynr"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Task 04A_a (single paragraph)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"paragraph\": \"Os negros escravizados\\nlutaram e resistiram contra o cativeiro de muitas maneiras:\\nqueimaram a lavoura\\ne promoveram fugas isoladas.\\nAlém disso, era comum sofrerem de profunda depressão,\\nque os impedia de trabalhar\\ne, muitas vezes, levava-os à morte.\\nTambém se manifestavam por meio de revoltas\\ne de assassinatos de senhores ou de capatazes.\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:5000/parser/parse_paragraph",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "5000",
+					"path": [
+						"parser",
+						"parse_paragraph"
+					]
+				},
+				"description": "Task 04A_b --> Entra texto Json formatado em um parágrafo e:\n\t\t(1) quebra o parágrafo em linhas;\n\t\t(2) para cada linha separa em palavras;\n\t\t(3) para cada palavra busca informações de parsing:\n\t\t\t- palavra\n\t\t\t- lema\n\t\t\t- etiquetas pós\n\t\t\t- informações morfológicas."
+			},
+			"response": []
+		},
+		{
+			"name": "Task 04A_b (many paragraphs)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"paragraphs\": [\n        \"Os negros escravizados\\nlutaram e resistiram contra o cativeiro de muitas maneiras:\\nqueimaram a lavoura\\ne promoveram fugas isoladas.\\nAlém disso, era comum sofrerem de profunda depressão,\\nque os impedia de trabalhar\\ne, muitas vezes, levava-os à morte.\\nTambém se manifestavam por meio de revoltas\\ne de assassinatos de senhores ou de capatazes.\",\n        \"Havia também as fugas de grupos,\\nque depois formavam povoados organizados,\\nconhecidos como quilombos.\\nEsses agrupamentos geralmente se fixavam em locais de difícil acesso,\\npara impedir a ação dos fazendeiros e das autoridades.\\nNesses locais,\\nalém dos escravos fugidos,\\nviviam alguns indígenas e pessoas livres pobres.\"\n    ],\n    \"subtitle\": \"Os negros escravizados lutaram e resistiram\",\n    \"title\": \"Lutaram e resistiram\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:5000/parser/parse_paragraphs",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "5000",
+					"path": [
+						"parser",
+						"parse_paragraphs"
+					]
+				},
+				"description": "Task 04A_b --> Entra texto Json formatado em parágrafos (assim como a task 04A_a) e:\n\t- realiza o mesmo processamento de 04A_b para vários parágrafos ao mesmo tempo."
+			},
+			"response": []
+		},
+		{
+			"name": "Task 04B (many paragraphs)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"paragraphs\": [\n        \"Os negros escravizados\\nlutaram e resistiram contra o cativeiro de muitas maneiras:\\nqueimaram a lavoura\\ne promoveram fugas isoladas.\\nAlém disso, era comum sofrerem de profunda depressão,\\nque os impedia de trabalhar\\ne, muitas vezes, levava-os à morte.\\nTambém se manifestavam por meio de revoltas\\ne de assassinatos de senhores ou de capatazes.\",\n        \"Havia também as fugas de grupos,\\nque depois formavam povoados organizados,\\nconhecidos como quilombos.\\nEsses agrupamentos geralmente se fixavam em locais de difícil acesso,\\npara impedir a ação dos fazendeiros e das autoridades.\\nNesses locais,\\nalém dos escravos fugidos,\\nviviam alguns indígenas e pessoas livres pobres.\"\n    ],\n    \"subtitle\": \"Os negros escravizados lutaram e resistiram\",\n    \"title\": \"Lutaram e resistiram\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": ""
+				},
+				"description": "Task 04B—> Entra texto Json formatado em parágrafos e: (1) quebra o parágrafo em linhas; \n(2) para cada linha extrai anotações relativas a função textual (PARTICIPANTE, ACONTECIMENTO, CAUSA, LUGAR e/ou TEMPO); (3) Extrai uma tabela geral com expressões extraídas no texto todo em relação aos 5 elementos de função textual citada acima."
+			},
+			"response": []
+		},
+		{
+			"name": "Task 04C_e_04D (many paragraphs)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"paragraphs\": [\n        \"Os negros escravizados\\nlutaram e resistiram contra o cativeiro de muitas maneiras:\\nqueimaram a lavoura\\ne promoveram fugas isoladas.\\nAlém disso, era comum sofrerem de profunda depressão,\\nque os impedia de trabalhar\\ne, muitas vezes, levava-os à morte.\\nTambém se manifestavam por meio de revoltas\\ne de assassinatos de senhores ou de capatazes.\",\n        \"Havia também as fugas de grupos,\\nque depois formavam povoados organizados,\\nconhecidos como quilombos.\\nEsses agrupamentos geralmente se fixavam em locais de difícil acesso,\\npara impedir a ação dos fazendeiros e das autoridades.\\nNesses locais,\\nalém dos escravos fugidos,\\nviviam alguns indígenas e pessoas livres pobres.\"\n    ],\n    \"subtitle\": \"Os negros escravizados lutaram e resistiram\",\n    \"title\": \"Lutaram e resistiram\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:5000/textual/parse_paragraphs_cd",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "5000",
+					"path": [
+						"textual",
+						"parse_paragraphs_cd"
+					]
+				},
+				"description": "Task 04C_e_04D --> Entra texto Json formatado em parágrafos e: \n(1) quebra o parágrafo em linhas; \n(2) para cada linha extrai anotação relativa a \n    (i) Etiquetas encontradas: identifica elementos linguísticos (usando etiquetas) em sequências de palavras (head’ e ‘body’ são parte de um mesmo elemento, ‘outside’ corresponde à palavras sem etiquetas e fora de qualquer elemento linguístico.\n    (ii) Identificação de sequências textuais, que podem ser: Descrição, Denominação, Explicação ou inexistente.\n(3) Realiza classificação do texto: Relato Descritivo, Relato Histórico ou Explicação Histórica"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
