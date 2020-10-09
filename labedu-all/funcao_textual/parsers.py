@@ -88,10 +88,11 @@ class FuncaoTextualSentenceParser:
         action_all = []
         for r in root:
             rights = list(r.rights)
-            b, e = list(rights)[0].i, list(rights)[-1].i + 1
-            bv = r.i
-            action_reconstructed = self.spacy_sent[bv: e].text
-            action_all.append({'verb': r.text, 'action': action_reconstructed})
+            if len(rights) > 0:
+                b, e = list(rights)[0].i, list(rights)[-1].i + 1
+                bv = r.i
+                action_reconstructed = self.spacy_sent[bv: e].text
+                action_all.append({'verb': r.text, 'action': action_reconstructed})
         self.table['acontecimento'] = action_all
 
     def parse_time(self):

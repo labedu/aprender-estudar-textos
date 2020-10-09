@@ -160,7 +160,7 @@ def funcao_parse_text_b():
             output = j
         except Exception as e:
             print(e)
-            output = {'error'}
+            output = {'error': 'error'}
 
         return output
     return 'ERROR: Not a POST method!'

@@ -24,17 +24,17 @@ class ConnectorsMap:
   @staticmethod
   def tokens():
     return {
-      'CON-TMP': sorted(['a partir daí', 'a partir de', 'a seguir', 'afinal', 'ainda', 'ainda hoje', 'antes', 'antes de', 'antes que', 'ao final', 'ao mesmo tempo que', 'ao passo que', 'apenas', 'após', 'assim que', 'até então', 'até que', 'atualmente', 'cada vez que', 'com o tempo', 'depois', 'depois que', 'diante de', 'em seguida', 'enquanto', 'finalmente', 'frequentemente', 'logo após', 'logo que', 'mais tarde', 'mal', 'no final', 'no momento', 'por fim', 'por longo tempo', 'posteriormente', 'primeiramente', 'primeiro que', 'quando', 'sempre que', 'toda vez que', 'todas as vezes que', 'no fim'], reverse=True),
-      'CON-TPO': sorted(['século', 'década', 'ano', 'mês', 'dia', 'período', 'época', 'durante', 'meados', 'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'], reverse=True),
+      'CON-TMP': sorted(['a partir daí', 'a partir de', 'a seguir', 'afinal', 'ainda', 'ainda hoje', 'antes', 'antes de', 'antes que', 'ao final', 'ao mesmo tempo que', 'ao passo que', 'apenas', 'após', 'assim que', 'até então', 'até que', 'atualmente', 'cada vez que', 'com o tempo', 'depois', 'depois que', 'diante de', 'em seguida', 'enquanto', 'finalmente', 'frequentemente', 'logo após', 'logo que', 'mais tarde', 'mal', 'no final', 'no momento', 'por fim', 'por longo tempo', 'posteriormente', 'primeiramente', 'primeiro que', 'sempre que', 'toda vez que', 'todas as vezes que', 'no fim'], reverse=True),
+      'CON-TPO': sorted(['século', 'década', 'ano', 'mês', 'dia', 'período', 'época', 'durante', 'meados', 'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro', 'séculos', 'décadas', 'anos', 'meses', 'dias', 'períodos', 'épocas'], reverse=True),
       'CON-ADT': sorted(['e', 'em geral', 'nem', 'também'], reverse=True),
       'CON-CNT': sorted(['apesar de que', 'ainda assim', 'ainda quanto', 'ainda que', 'antes bem', 'ao contrário', 'ao invés de', 'ao invés disso', 'apesar de', 'apesar disso', 'caso contrário', 'contrariamente', 'contudo', 'em contrapartida', 'em contraste', 'em lugar de', 'em paralelo', 'em troca', 'em vez de', 'embora', 'entretanto', 'mas', 'mesmo que', 'não obstante', 'nem bem', 'nem que', 'no entanto', 'pelo contrário', 'por mais', 'por menos', 'por muito que', 'por outro lado', 'porém', 'posto que', 'se bem que', 'todavia'], reverse=True),
       'CON-CMP': sorted(['assim como', 'da mesma forma', 'de modo semelhante', 'do mesmo modo que', 'em comparação', 'mais que', 'menos que', 'tal qual', 'tanto quanto', 'tão quanto'], reverse=True),
       'CON-CAU': sorted(['assim', 'causado por', 'com isso', 'como consequência', 'como resultado', 'consequentemente', 'dado que', 'dessa forma', 'dessa maneira', 'desse modo', 'diante disso', 'em resposta', 'já que', 'logo', 'nesse caso', 'pois', 'pois que', 'por causa', 'por causa que', 'por conseguinte', 'por essa razão', 'por esse motivo', 'por isso', 'por isso que', 'por quanto', 'porque', 'portanto', 'sendo assim', 'tanto mais que', 'uma vez que', 'visto como', 'visto que'], reverse=True),
-      'CON-CND': sorted(['a medida que', 'a menos que', 'a não ser que', 'caso', 'contanto que', 'desde que', 'exeto se', 'salvo se', 'sem que'], reverse=True),
+      'CON-CND': sorted(['a medida que', 'a menos que', 'a não ser que', 'caso', 'contanto que', 'desde que', 'exceto se', 'salvo se', 'sem que'], reverse=True),
       'CON-FIN': sorted(['a fim de', 'a fim de que', 'a propósito', 'através', 'com o intuito de', 'com o objetivo de', 'para', 'para esse fim', 'para isso', 'para que', 'para tanto'], reverse=True),
       'CON-ELB': sorted(['adicionalmente', 'além de', 'além disso', 'bem como', 'como exemplo', 'como também', 'como, por exemplo,', 'em adição', 'em particular', 'especificamente', 'inclusive', 'por exemplo', 'principalmente'], reverse=True),
       'CON-CAE': sorted(['como'], reverse=True),
-      'CON-TCA': sorted(['então'], reverse=True),
+      'CON-TCA': sorted(['então', 'quando'], reverse=True),
     }
 
   @staticmethod
