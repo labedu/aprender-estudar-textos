@@ -3,6 +3,8 @@ services:
   all:
     build: 
       context: ./labedu-all
+    volumes:
+      - ./labedu-all:/app
     ports:
       - "5000:5000"
   ocr:
