@@ -126,7 +126,7 @@ class ParseVerbs:
     self.verbs_parser = ParserTags(VerbsMap.tokens(), VerbsMap.labels())
 
   def parse(self, spacy_sentence):
-    sentence_lemma = [x.lemma_.lower() if x.pos_ == 'VERB' else "x" for x in spacy_sentence]
+    sentence_lemma = [x.lemma_.lower() if x.pos_ == 'VERB' or x.pos_ == 'AUX' else "x" for x in spacy_sentence]
     parsed_result = self.verbs_parser.parse(sentence_lemma)
     return parsed_result
 
