@@ -1,4 +1,5 @@
 from collections.abc import MutableMapping
+from markupsafe import escape
 from flask import Flask, request, jsonify
 from werkzeug.utils import secure_filename
 import os
