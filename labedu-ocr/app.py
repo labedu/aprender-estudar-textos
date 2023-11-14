@@ -1,5 +1,6 @@
+from collections.abc import MutableMapping
 from flask import Flask, request, jsonify
-from werkzeug import secure_filename
+from werkzeug.utils import secure_filename
 import os
 import sys
 from PIL import Image
